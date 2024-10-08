@@ -13,13 +13,15 @@ Only one percentage-based discount can be applied per bill.
 Final Amount Calculation: After discounts and currency conversion.
 
 # Technologies Uesd:-
-Spring Boot: REST API framework.
-Spring Security: For authentication and authorization.
-Java: Core language.
-RestTemplate: To fetch currency exchange rates.
-JUnit: Unit testing framework.
-Maven: Build and dependency management.
-Lambok: Java library that reduces boilerplate code by generating getter/setter methods.
+1.Spring Boot: REST API framework.
+2.Spring Security: For authentication and authorization.
+3.Java: Core language.
+4.RestTemplate: To fetch currency exchange rates.
+5.JUnit: Unit testing framework.
+6.Maven: Build and dependency management.
+7.Lambok: Java library that reduces boilerplate code by generating getter/setter methods.
+8.SonarQuebe: for code quality.
+9.Eclemma: for code coverage.
 
 # Installation and Setup prerequisites:-
 Ensure you have the following installed:
@@ -97,6 +99,8 @@ add dependency for security:-
   # Project Structure:-
 
 ![image](https://github.com/user-attachments/assets/c12f852b-ff7c-49c2-abc5-f3fbe57d326c)
+
+
 ![image](https://github.com/user-attachments/assets/d01f1ff5-3eb4-4ed2-aabc-3da5a7482c12)
 
 
