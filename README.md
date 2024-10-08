@@ -14,13 +14,21 @@ Final Amount Calculation: After discounts and currency conversion.
 
 # Technologies Uesd:-
 1.Spring Boot: REST API framework.
+
 2.Spring Security: For authentication and authorization.
+
 3.Java: Core language.
+
 4.RestTemplate: To fetch currency exchange rates.
+
 5.JUnit: Unit testing framework.
+
 6.Maven: Build and dependency management.
+
 7.Lambok: Java library that reduces boilerplate code by generating getter/setter methods.
+
 8.SonarQuebe: for code quality.
+
 9.Eclemma: for code coverage.
 
 # Installation and Setup prerequisites:-
