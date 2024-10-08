@@ -30,7 +30,9 @@ Maven
 
 # Steps to setup:-
 Clone the repository:
+
 git clone https://github.com/your-repo/Spring-Boot-Currency-Exchange-Discount.git
+
 cd Spring-Boot-Currency-Exchange-Discount
 
 # Assumption:-
