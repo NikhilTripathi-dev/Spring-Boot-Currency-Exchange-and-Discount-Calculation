@@ -19,6 +19,7 @@ Java: Core language.
 RestTemplate: To fetch currency exchange rates.
 JUnit: Unit testing framework.
 Maven: Build and dependency management.
+Lambok: Java library that reduces boilerplate code by generating getter/setter methods.
 
 # Installation and Setup prerequisites:-
 Ensure you have the following installed:
@@ -88,6 +89,17 @@ This will build the project, analyze the code, and send the results to the Sonar
 # Security: using spring boot basic security.
 
 add dependency for security:-
+  <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+  # Project Structure:-
+
+![image](https://github.com/user-attachments/assets/c12f852b-ff7c-49c2-abc5-f3fbe57d326c)
+![image](https://github.com/user-attachments/assets/d01f1ff5-3eb4-4ed2-aabc-3da5a7482c12)
+
+
 
 
 
