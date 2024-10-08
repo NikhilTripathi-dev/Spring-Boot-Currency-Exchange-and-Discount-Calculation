@@ -5,11 +5,17 @@ This Spring Boot application integrates with a third-party currency exchange API
 Currency Conversion: Converts total bill from one currency to another using live exchange rates.
 # Discount Rules:
 30% discount for store employees.
+
 10% discount for store affiliates.
+
 5% discount for customers with over 2 years of tenure.
+
 $5 discount for every $100 spent.
+
 No percentage-based discounts on groceries.
+
 Only one percentage-based discount can be applied per bill.
+
 Final Amount Calculation: After discounts and currency conversion.
 
 # Technologies Uesd:-
