@@ -2,6 +2,8 @@ package com.example.currency.exchange.and.discount.calculation.dto;
 
 import java.time.LocalDate;
 
+import com.example.currency.exchange.and.discount.calculation.config.UserType;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,10 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class User {
 
-	private int id;
+	private int userId;
 	private String name;
-	private boolean isEmployee;
-	private boolean isAffiliate;
+	private UserType userType;
 	private LocalDate registrationDate;
 
 }
