@@ -1,5 +1,6 @@
 package com.example.currency.exchange.and.discount.calculation.service;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -18,6 +19,7 @@ public class CurrencyService{
 	}
 
 
+	@Cacheable(value = "exchangeRates", key = "#request.baseCurrency + '_' + #request.targetCurrency")
 	public double getExchangeRate(String baseCurrency, String targetCurrency) {
 		String url = UriComponentsBuilder.fromHttpUrl(BASE_URL + baseCurrency).queryParam("apikey", API_KEY)
 				.toUriString();
