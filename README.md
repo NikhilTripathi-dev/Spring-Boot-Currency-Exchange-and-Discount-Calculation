@@ -116,6 +116,9 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 ![image](https://github.com/user-attachments/assets/ba8917e4-2556-4704-a08e-3941d3289afb)
 
 
+# Assumption
+ SQL Database is in place and we will use userid to get whether user is an employee or an affiliate or customer over 2 years from database
+
 
 # Usage
 
