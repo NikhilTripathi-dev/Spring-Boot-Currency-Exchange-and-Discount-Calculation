@@ -146,7 +146,7 @@ Develop a Spring Boot application that integrates with a third-party currency ex
  
 # The application accepts inputs:
 
-  BillRequest: Whether the user is an employee, affiliate, a long-term customer (over 2 years) and original currency and target currency.
+  BillRequest: Whether the user is an employee, affiliate, a long-term customer (over 2 years), product details, original currency and target currency.
 
 # License
 
