@@ -4,12 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 
+import com.example.currency.exchange.and.discount.calculation.config.DiscountConstant;
+import com.example.currency.exchange.and.discount.calculation.config.UserType;
 import com.example.currency.exchange.and.discount.calculation.dto.BillRequest;
 import com.example.currency.exchange.and.discount.calculation.dto.Product;
 import com.example.currency.exchange.and.discount.calculation.dto.User;
@@ -26,99 +27,65 @@ public class DiscountServiceImplTest {
 	}
 
 	@Test
-	public void testCalculateTotalBill_withEmployeeDiscount() {
+	public void testCalculateTotalBill_WithEmployeeDiscount() {
 
-		User user = new User();
-		user.setEmployee(true);
-		user.setRegistrationDate(LocalDate.now().minusYears(3));
+		User user = new User(0, "Alice", UserType.EMPLOYEE, LocalDate.of(2020, 1, 1));
+		Product product1 = new Product(0, "Laptop", 1000, false);
+		Product product2 = new Product(0, "Groceries", 200, true);
+		BillRequest billRequest = new BillRequest(0, Arrays.asList(product1, product2), user, null, null);
 
-		Product product1 = new Product("Laptop", 300.0, false);
-		Product product2 = new Product("Charger", 20.0, false);
+		double totalBill = discountService.calculateDiscount(billRequest);
 
-		List<Product> productList = Arrays.asList(product1, product2);
-		BillRequest billRequest = new BillRequest(user, productList, "USD", "EUR");
+		double expectedTotal = (1000 * (DiscountConstant.VALUE_ONE - DiscountConstant.EMPLOYEE_DISCOUNT_RATE)) + 200;
 
-		double exchangeRate = 0.85;
+		expectedTotal = discountService.applyFlatDiscount(expectedTotal);
 
-		double finalAmount = discountService.calculateTotalBill(billRequest, exchangeRate);
-
-		double nonGroceryTotal = product1.getPrice() + product2.getPrice();
-		double discountedTotal = nonGroceryTotal * 0.7;
-		discountedTotal = applyFlatDiscount(discountedTotal);
-		double expectedTotal = discountedTotal * exchangeRate;
-
-		assertEquals(expectedTotal, finalAmount, 0.001);
+		assertEquals(expectedTotal, totalBill);
 	}
 
 	@Test
-	public void testCalculateTotalBill_withAffiliateDiscount() {
+	public void testCalculateTotalBill_WithAffiliateDiscount() {
 
-		User user = new User();
-		user.setAffiliate(true);
+		User user = new User(0, "Bob", UserType.AFFILIATE, LocalDate.of(2021, 1, 1));
+		Product product1 = new Product(0, "Smartphone", 800, false);
+		Product product2 = new Product(0, "Groceries", 150, true);
+		BillRequest billRequest = new BillRequest(0, Arrays.asList(product1, product2), user, null, null);
 
-		Product product1 = new Product("TV", 400.0, false);
-		Product product2 = new Product("Sofa", 600.0, false);
+		double totalBill = discountService.calculateDiscount(billRequest);
 
-		List<Product> productList = Arrays.asList(product1, product2);
-		BillRequest billRequest = new BillRequest(user, productList, "USD", "EUR");
-
-		double exchangeRate = 0.85;
-
-		double finalAmount = discountService.calculateTotalBill(billRequest, exchangeRate);
-
-		double expectedTotal = (400.0 + 600.0) * 0.9;
-		expectedTotal = applyFlatDiscount(expectedTotal);
-		expectedTotal *= exchangeRate;
-
-		assertEquals(expectedTotal, finalAmount, 0.001);
+		double expectedTotal = (800 * (1 - DiscountConstant.AFFILIATE_DISCOUNT_RATE)) + 150;
+		expectedTotal = discountService.applyFlatDiscount(expectedTotal);
+		assertEquals(expectedTotal, totalBill);
 	}
 
 	@Test
-	public void testCalculateTotalBill_withLoyalCustomerDiscount() {
+	public void testCalculateTotalBill_WithLongTermCustomerDiscount() {
 
-		User user = new User();
-		user.setRegistrationDate(LocalDate.now().minusYears(3));
+		User user = new User(0, "Charlie", UserType.CUSTOMER, LocalDate.of(2018, 1, 1));
+		Product product1 = new Product(0, "Tablet", 600, false);
+		Product product2 = new Product(0, "Groceries", 100, true);
+		BillRequest billRequest = new BillRequest(0, Arrays.asList(product1, product2), user, null, null);
 
-		Product product1 = new Product("Microwave", 150.0, false);
+		double totalBill = discountService.calculateDiscount(billRequest);
 
-		List<Product> productList = Arrays.asList(product1);
-		BillRequest billRequest = new BillRequest(user, productList, "USD", "EUR");
-
-		double exchangeRate = 0.85;
-
-		double finalAmount = discountService.calculateTotalBill(billRequest, exchangeRate);
-
-		double expectedTotal = 150.0 * 0.95;
-		expectedTotal = applyFlatDiscount(expectedTotal);
-		expectedTotal *= exchangeRate;
-
-		assertEquals(expectedTotal, finalAmount, 0.001);
+		double expectedTotal = (600 * (1 - DiscountConstant.LONG_TERM_CUSTOMER_DISCOUNT_RATE)) + 100;
+		expectedTotal = discountService.applyFlatDiscount(expectedTotal);
+		assertEquals(expectedTotal, totalBill);
 	}
 
 	@Test
-	public void testCalculateTotalBill_withNoDiscount() {
+	public void testCalculateTotalBill_NoDiscount() {
 
-		User user = new User();
+		User user = new User(0, "David", UserType.CUSTOMER, LocalDate.of(2022, 1, 1));
+		Product product1 = new Product(0, "Monitor", 300, false);
+		Product product2 = new Product(0, "Groceries", 50, true);
+		BillRequest billRequest = new BillRequest(0, Arrays.asList(product1, product2), user, null, null);
 
-		Product product1 = new Product("Bread", 10.0, true);
-		Product product2 = new Product("Milk", 5.0, true);
+		double totalBill = discountService.calculateDiscount(billRequest);
 
-		List<Product> productList = Arrays.asList(product1, product2);
-		BillRequest billRequest = new BillRequest(user, productList, "USD", "EUR");
+		double expectedTotal = 300 + 50;
 
-		double exchangeRate = 0.85;
-
-		double finalAmount = discountService.calculateTotalBill(billRequest, exchangeRate);
-
-		double expectedTotal = 10.0 + 5.0;
-		expectedTotal = applyFlatDiscount(expectedTotal);
-		expectedTotal *= exchangeRate;
-
-		assertEquals(expectedTotal, finalAmount, 0.001);
-	}
-
-	private double applyFlatDiscount(double total) {
-		int discountUnits = (int) (total / 100);
-		return total - (discountUnits * 5);
+		expectedTotal = discountService.applyFlatDiscount(expectedTotal);
+		assertEquals(expectedTotal, totalBill);
 	}
 }
