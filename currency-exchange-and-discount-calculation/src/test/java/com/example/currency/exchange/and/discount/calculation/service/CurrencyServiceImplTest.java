@@ -16,14 +16,15 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.currency.exchange.and.discount.calculation.dto.ExchangeRateResponse;
+import com.example.currency.exchange.and.discount.calculation.service.impl.CurrencyServiceImpl;
 
-public class CurrencyServiceTest {
+public class CurrencyServiceImplTest {
 
     @Mock
     private RestTemplate restTemplate;
 
     @InjectMocks
-    private CurrencyService currencyService;
+    private CurrencyServiceImpl currencyService;
 
     @BeforeEach
     public void setUp() {
