@@ -102,6 +102,34 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 
 7. JUnit Tests: Comprehensive unit tests for all discount scenarios.
 
+   ![image](https://github.com/user-attachments/assets/04836b56-e00d-4bc9-ab5b-1801d8898935)
+
+
+
+
+# Usage
+
+ This application calculates the net payable amount based on the following rules:
+
+ A percentage-based discount applies depending on the user’s relationship with the store.
+
+ if the user is an employee of the store, they get a 30% discount.
+
+ If the user is an affiliate of the store, they get a 10% discount.
+
+ If the user has been a customer for over 2 years, they get a 5% discount.
+ 
+ If the bill contains groceries, percentage discounts are not applied.
+ 
+ A fixed discount of $5 is applied for every $100 on the bill.
+
+ Convert the bill total from the original currency to the target currency using the retrieved exchange rates.
+
+ Calculate the final payable amount in the target currency after applying the applicable discounts.
+ 
+# The application accepts two inputs:
+
+  BillRequest: Whether the user is an employee, affiliate, a long-term customer (over 2 years) and original currency and target currency.
 
 # License
 
