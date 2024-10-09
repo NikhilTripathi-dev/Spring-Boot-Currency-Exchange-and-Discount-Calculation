@@ -1,124 +1,137 @@
 # Currency Exchange and Discount Calculation
 # Overview
-Develop a Spring Boot application that integrates with a third-party currency exchange API to retrieve real-time exchange rates. The application should calculate the total payable amount for a bill in a specified currency after applying applicable discounts. The application should expose an API endpoint that allows users to submit a bill in one currency and get the payable amount in another currency..
+Develop a Spring Boot application that integrates with a third-party currency exchange API to retrieve real-time exchange rates. The application should calculate the total payable amount for a bill in a specified currency after applying applicable discounts. The application should expose an API endpoint that allows users to submit a bill in one currency and get the payable amount in another currency.
 
-# Features:-
-Currency Conversion: Converts total bill from one currency to another using live exchange rates. 
-# Discount Rules:
-30% discount for store employees.
+# Technologies Used
 
-10% discount for store affiliates.
+1. Java 17 or later
 
-5% discount for customers with over 2 years of tenure.
+2. Spring Boot framwork
 
-$5 discount for every $100 spent.
+3. JUnit: Unit testing framework.
 
-No percentage-based discounts on groceries.
+4. Any IDE such as IntelliJ IDEA or Eclipse.
 
-Only one percentage-based discount can be applied per bill.
+5. Maven: Build and dependency management.
 
-Final Amount Calculation: After discounts and currency conversion.
-
-# Technologies Uesd:-
-1.Spring Boot: REST API framework.
-
-2.Spring Security: For authentication and authorization.
-
-3.Java: Core language.
-
-4.RestTemplate: To fetch currency exchange rates.
-
-5.JUnit: Unit testing framework.
-
-6.Maven: Build and dependency management.
-
-7.Lambok: Java library that reduces boilerplate code by generating getter/setter methods.
-
-8.SonarQuebe: for code quality.
-
-9.Eclemma: for code coverage.
-
-# Installation and Setup prerequisites:-
-Ensure you have the following installed:
-Java 17 or higher
-Maven
-
-# Steps to setup:-
-Clone the repository:
-
-git clone https://github.com/your-repo/Spring-Boot-Currency-Exchange-Discount.git
-
-cd Spring-Boot-Currency-Exchange-Discount
-
-# Assumption:-
-Configure API Key:
-Obtain an API key from a currency exchange service and add it to the src/main/resources/application.properties:
-currency.api.url=https://api.exchangeratesapi.io/latest
-currency.api.key=YOUR_API_KEY
-
-# Build the application
-mvn clean install
-
-# Run the Application
-mvn spring-boot:run
-
-# API Endpoints
-POST /api/calculate
-
-The application will start on http://localhost:8080.
-
-# Use eclemma plugin for code coverege.
-
-# Step 1: download and install SonarQube
-# Step 2: Configure SonarQube in Your Spring Boot Project
-# 1. Install Sonar Scanner for Maven
-If you're using Maven, you can integrate SonarQube using the Sonar Maven plugin.
-
-Add the following plugin to your pom.xml:
-
-xml
-Copy code
-<build>
-  <plugins>
-    <plugin>
-      <groupId>org.sonarsource.scanner.maven</groupId>
-      <artifactId>sonar-maven-plugin</artifactId>
-      <version>3.9.1.2184</version>
-    </plugin>
-  </plugins>
-</build>
-# 2. Add SonarQube Properties to the pom.xml
-In the pom.xml file, add the necessary SonarQube properties under the <properties> section:
-
-xml
-Copy code
-<properties>
-  <sonar.host.url>http://localhost:9000</sonar.host.url>
-  <sonar.login>your-sonarqube-token</sonar.login>
-</properties>
-You can generate a SonarQube token from the SonarQube dashboard by going to User Settings -> Security -> Generate Tokens.
-
-# 3. Running the SonarQube Analysis
-After setting up the project, run the following Maven command to analyze your Spring Boot project with SonarQube:
-
-Copy code
-mvn clean verify sonar:sonar
-This will build the project, analyze the code, and send the results to the SonarQube dashboard. After completion, you can view the analysis results in SonarQube at http://localhost:9000.
-
-# Security: using spring boot basic security.
-
-add dependency for security:-
-  <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-  # Project Structure:-
-
-![image](https://github.com/user-attachments/assets/c12f852b-ff7c-49c2-abc5-f3fbe57d326c)
+6. Lambok: Java library that reduces boilerplate code by generating getter/setter methods.
 
 
-![image](https://github.com/user-attachments/assets/d01f1ff5-3eb4-4ed2-aabc-3da5a7482c12)
+# Steps to Set Up
+  # Step 1: Clone the repository
+
+   git clone https://github.com/your-repo/Spring-Boot-Currency-Exchange-Discount.git
+
+   cd Spring-Boot-Currency-Exchange-Discount
+
+# Step 2: Build the project using Maven
+
+  mvn clean install
+
+# Step 3: Run the Application: You can run the Spring Boot application using the following command
+
+  mvn spring-boot:run
+
+  The application will start on http://localhost:8080/
+
+# Step 4 : Run test cases with code coverage
+  mvn test
+
+# Key Features 
+
+ # Third-Party API Integration
+
+    1. Integrate with a currency exchange API, such as ExchangeRate-API or Open Exchange Rates, to get real-time currency exchange rates.
+
+    2. Use the API key (replace your-api-key in the URL below) to access exchange rates.
+       
+        Example endpoint: https://open.er-api.com/v6/latest/{base_currency}?apikey=your-api-key
+ 
+	
+# Discounts and Currency Conversion Logic
+  # Apply discounts as per the following rules
+  
+       1. If the user is an employee of the store, they get a 30% discount.
+ 
+       2. If the user is an affiliate of the store, they get a 10% discount.
+	
+       3. If the user has been a customer for over 2 years, they get a 5% discount.
+ 
+       4. For every $100 on the bill, there is a $5 discount.
+
+       5. The percentage-based discounts do not apply to groceries.
+
+       6. A user can get only one of the percentage-based discounts on a bill.
+	
+       7. Convert the bill total from the original currency to the target currency using the retrieved exchange rates.
+
+       8. Calculate the final payable amount in the target currency after applying the applicable discounts.
+ 
+# Authentication
+
+	1. Implement authentication for the exposed endpoints. 
+ 
+ # Endpoint Exposure
+        1. Expose an API endpoint (/api/calculate) to accept bill details including items, their categories, total amount, user type, customer tenure, original currency, and target currency.
+ 
+        2. The endpoint should return the net payable amount in the specified target currency after applying applicable discounts and currency conversion.
+ 
+# Design and Testing
+
+	1. Use object-oriented programming principles to design the application.
+
+	2. Provide a high-level UML class diagram of all key classes in your solution.
+ 
+	3. Write unit tests to achieve good code coverage, utilizing mocking frameworks where applicable.
+ 
+	4. Ensure code simplicity and adherence to modern coding practices.
+
+# Project Structure
+
+1. CurrencyController: Handles API requests for billing and exposes endpoints like
+
+2. CurrencyService Interface: Contains the core business logic, orchestrating the discount application, fetching exchange rates, and calculating the final bill.
+
+3. DiscountService Interface: Contains logic to apply various discounts based on user roles, tenure, and bill items. 
+
+4. BillRequest: Represents the bill entity, with fields like amount, currency, userId, and items
+
+5. ExchangeRateResponse: Response the bill entity, with fields like amount, currency, userId, and items.
+
+6. SecurityConfig: Basic authentication.
+
+7. JUnit Tests: Comprehensive unit tests for all discount scenarios.
+
+
+# License
+
+   This project is licensed under the MIT License - see the LICENSE file for details.
+
+# Contributing
+
+   If you'd like to contribute to this project:
+
+  Fork the repository.
+  
+  Create a new branch (git checkout -b feature/your-feature).
+  
+  Commit your changes (git commit -am 'Add some feature').
+  
+  Push to the branch (git push origin feature/your-feature).
+  
+  Create a new Pull Request.
+  
+# Contact
+    For any issues or suggestions, please feel free to contact:
+    
+    Email: abc@gmail.com
+
+
+
+
+
+
+
 
 
 
