@@ -109,6 +109,7 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 8. AppConfig: Rest template configuration.
 
 9. JUnit Tests: Comprehensive unit tests for all discount scenarios.
+    
 
 
  ![image](https://github.com/user-attachments/assets/058ef240-2faf-46cb-b2e6-4d0d65b8185f)
