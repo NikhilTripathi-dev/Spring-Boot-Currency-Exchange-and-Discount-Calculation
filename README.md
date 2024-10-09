@@ -88,15 +88,15 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 
 # Project Structure
 
-1. CurrencyController: Handles API requests for billing and exposes endpoints like
+1. CurrencyController: Handles incoming requests and communicates with the service layer to process them.
 
-2. CurrencyService Interface: Contains the core business logic, orchestrating the discount application, fetching exchange rates, and calculating the final bill.
+2. CurrencyService: Class for fetching exchange rates.
 
-3. DiscountService Interface: Contains logic to apply various discounts based on user roles, tenure, and bill items. 
+3. DiscountService: Class for calculating discounts. 
 
-4. BillRequest: Represents the bill entity, with fields like amount, currency, userId, and items
+4. BillRequest: Represents the request object for calculating the payable amount.
 
-5. ExchangeRateResponse: Response the bill entity, with fields like amount, currency, userId, and items.
+5. ExchangeRateResponse: Represents the response object for exchange rates.
 
 6. AppConfig: Rest template configuration.
 
@@ -108,8 +108,7 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 
 # UML
 
-
-
+![image](https://github.com/user-attachments/assets/ba8917e4-2556-4704-a08e-3941d3289afb)
 
 
 
