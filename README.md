@@ -94,17 +94,21 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 
 1. CurrencyController: Handles incoming requests and communicates with the service layer to process them.
 
-2. CurrencyService: Class for fetching exchange rates.
+2. CurrencyService: interface for fetching exchange rates.
 
-3. DiscountService: Class for calculating discounts. 
+3. DiscountService: interface for calculating discounts. 
 
 4. BillRequest: Represents the request object for calculating the payable amount.
+ 
+5. Product : Product details
 
-5. ExchangeRateResponse: Represents the response object for exchange rates.
+6. User: User details
 
-6. AppConfig: Rest template configuration.
+7. ExchangeRateResponse: Represents the response object for exchange rates.
 
-7. JUnit Tests: Comprehensive unit tests for all discount scenarios.
+8. AppConfig: Rest template configuration.
+
+9. JUnit Tests: Comprehensive unit tests for all discount scenarios.
 
  ![image](https://github.com/user-attachments/assets/058ef240-2faf-46cb-b2e6-4d0d65b8185f)
 
