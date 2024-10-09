@@ -2,8 +2,11 @@ package com.example.currency.exchange.and.discount.calculation.service.impl;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
+import com.example.currency.exchange.and.discount.calculation.config.DiscountConstant;
+import com.example.currency.exchange.and.discount.calculation.config.UserType;
 import com.example.currency.exchange.and.discount.calculation.dto.BillRequest;
 import com.example.currency.exchange.and.discount.calculation.dto.Product;
 import com.example.currency.exchange.and.discount.calculation.dto.User;
@@ -12,29 +15,31 @@ import com.example.currency.exchange.and.discount.calculation.service.DiscountSe
 public class DiscountServiceImpl implements DiscountService {
 
 	@Override
-	public double calculateTotalBill(BillRequest billRequest, double exchangeRate) {
-		double groceryTotal = calculateGroceryTotal(billRequest.getProducts());
-		double nonGroceryTotal = calculateNonGroceryTotal(billRequest.getProducts());
+	public double calculateDiscount(BillRequest billRequest) {
+		Map<Boolean, Double> totals = billRequest.getProducts().stream()
+				.collect(Collectors.partitioningBy(Product::isGrocery, Collectors.summingDouble(Product::getPrice)));
+		double groceryTotal = totals.getOrDefault(true, DiscountConstant.VALUE_ZERO);
+		double nonGroceryTotal = totals.getOrDefault(false, DiscountConstant.VALUE_ZERO);
 		double discountedNonGroceryTotal = applyPercentageDiscount(billRequest.getUser(), nonGroceryTotal);
 		double totalBeforeFlatDiscount = groceryTotal + discountedNonGroceryTotal;
 		double finalTotal = applyFlatDiscount(totalBeforeFlatDiscount);
-		return finalTotal * exchangeRate;
+		return finalTotal;
 	}
 
-	private double applyFlatDiscount(double total) {
-		int discountUnits = (int) (total / 100);
-		return total - (discountUnits * 5);
+	public double applyFlatDiscount(double total) {
+		int discountUnits = (int) (total / DiscountConstant.VALUE_HUNDRED);
+		return total - (discountUnits * DiscountConstant.FLAT_DISCOUNT_RATE);
 	}
 
 	private double applyPercentageDiscount(User user, double total) {
-		if (user.isEmployee()) {
-			return total * 0.7;
-		} else if (user.isAffiliate()) {
-			return total * 0.9;
-		} else if (customerTenure(user)) {
-			return total * 0.95;
-		}
-		return total;
+	    if (user.getUserType() == UserType.EMPLOYEE) {
+	        return total * (DiscountConstant.VALUE_ONE - DiscountConstant.EMPLOYEE_DISCOUNT_RATE);
+	    } else if (user.getUserType() == UserType.AFFILIATE) {
+	        return total * (DiscountConstant.VALUE_ONE - DiscountConstant.AFFILIATE_DISCOUNT_RATE);
+	    } else if (customerTenure(user)) {
+	        return total * (DiscountConstant.VALUE_ONE - DiscountConstant.LONG_TERM_CUSTOMER_DISCOUNT_RATE);
+	    }
+	    return total; 
 	}
 
 	private boolean customerTenure(User user) {
@@ -42,15 +47,7 @@ public class DiscountServiceImpl implements DiscountService {
 		if (user.getRegistrationDate() == null) {
 			return false;
 		}
-		return ChronoUnit.YEARS.between(user.getRegistrationDate(), LocalDate.now()) > 2;
-	}
-
-	private double calculateNonGroceryTotal(List<Product> products) {
-		return products.stream().filter(product -> !product.isGrocery()).mapToDouble(Product::getPrice).sum();
-	}
-
-	private double calculateGroceryTotal(List<Product> products) {
-		return products.stream().filter(Product::isGrocery).mapToDouble(Product::getPrice).sum();
+		return ChronoUnit.YEARS.between(user.getRegistrationDate(), LocalDate.now()) > DiscountConstant.LONG_TERM_CUSTOMER_TENURE;
 	}
 
 }
