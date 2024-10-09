@@ -5,6 +5,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
 import com.example.currency.exchange.and.discount.calculation.config.DiscountConstant;
 import com.example.currency.exchange.and.discount.calculation.config.UserType;
 import com.example.currency.exchange.and.discount.calculation.dto.BillRequest;
@@ -12,6 +14,7 @@ import com.example.currency.exchange.and.discount.calculation.dto.Product;
 import com.example.currency.exchange.and.discount.calculation.dto.User;
 import com.example.currency.exchange.and.discount.calculation.service.DiscountService;
 
+@Service
 public class DiscountServiceImpl implements DiscountService {
 
 	@Override
@@ -23,7 +26,7 @@ public class DiscountServiceImpl implements DiscountService {
 		double discountedNonGroceryTotal = applyPercentageDiscount(billRequest.getUser(), nonGroceryTotal);
 		double totalBeforeFlatDiscount = groceryTotal + discountedNonGroceryTotal;
 		double finalTotal = applyFlatDiscount(totalBeforeFlatDiscount);
-		return finalTotal;
+		return finalTotal; 
 	}
 
 	public double applyFlatDiscount(double total) {
