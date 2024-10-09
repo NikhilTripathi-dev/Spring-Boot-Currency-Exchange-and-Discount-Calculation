@@ -98,11 +98,12 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 
 5. ExchangeRateResponse: Response the bill entity, with fields like amount, currency, userId, and items.
 
-6. SecurityConfig: Basic authentication.
+6. AppConfig: Rest template configuration.
 
 7. JUnit Tests: Comprehensive unit tests for all discount scenarios.
 
-   ![image](https://github.com/user-attachments/assets/04836b56-e00d-4bc9-ab5b-1801d8898935)
+   ![image](https://github.com/user-attachments/assets/2068a7ad-7b50-4de0-9590-9d8e753e3978)
+
 
 
 # UML
