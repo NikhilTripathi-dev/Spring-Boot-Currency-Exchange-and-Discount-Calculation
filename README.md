@@ -106,8 +106,7 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 
 7. JUnit Tests: Comprehensive unit tests for all discount scenarios.
 
-  ![image](https://github.com/user-attachments/assets/26be487d-c401-45a7-804e-ca3bffab78d5)
-
+ ![image](https://github.com/user-attachments/assets/058ef240-2faf-46cb-b2e6-4d0d65b8185f)
 
 
 
