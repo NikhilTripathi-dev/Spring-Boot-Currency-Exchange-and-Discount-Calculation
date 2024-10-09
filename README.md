@@ -105,6 +105,11 @@ Develop a Spring Boot application that integrates with a third-party currency ex
    ![image](https://github.com/user-attachments/assets/04836b56-e00d-4bc9-ab5b-1801d8898935)
 
 
+# UML
+
+
+
+
 
 
 # Usage
