@@ -7,7 +7,7 @@ import com.example.currency.exchange.and.discount.calculation.dto.BillRequest;
 @Service
 public interface DiscountService {
 
-	public double calculateTotalBill(BillRequest billRequest, double exchangeRate);
+	public double calculateDiscount(BillRequest billRequest);
 		
 
 }
