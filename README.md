@@ -28,7 +28,7 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 
   mvn clean install
 
-# Step 3: Run the Application: You can run the Spring Boot application using the following command
+# Step 3: Run the Application
 
   mvn spring-boot:run
 
@@ -106,7 +106,8 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 
 7. JUnit Tests: Comprehensive unit tests for all discount scenarios.
 
-   ![image](https://github.com/user-attachments/assets/2068a7ad-7b50-4de0-9590-9d8e753e3978)
+  ![image](https://github.com/user-attachments/assets/26be487d-c401-45a7-804e-ca3bffab78d5)
+
 
 
 
@@ -161,7 +162,7 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 # Contact
     For any issues or suggestions, please feel free to contact:
     
-    Email: abc@gmail.com
+    Email: nikhiltripathi833@gmail.com
 
 
 
