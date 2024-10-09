@@ -3,7 +3,7 @@
 Develop a Spring Boot application that integrates with a third-party currency exchange API to retrieve real-time exchange rates. The application should calculate the total payable amount for a bill in a specified currency after applying applicable discounts. The application should expose an API endpoint that allows users to submit a bill in one currency and get the payable amount in another currency..
 
 # Features:-
-Currency Conversion: Converts total bill from one currency to another using live exchange rates.
+Currency Conversion: Converts total bill from one currency to another using live exchange rates. 
 # Discount Rules:
 30% discount for store employees.
 
