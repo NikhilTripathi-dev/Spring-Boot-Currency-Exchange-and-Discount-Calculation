@@ -71,6 +71,10 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 
 	1. Implement authentication for the exposed endpoints. 
  
+# Caching:
+
+     1. Implement caching for exchange rates to reduce API calls
+ 
  # Endpoint Exposure
         1. Expose an API endpoint (/api/calculate) to accept bill details including items, their categories, total amount, user type, customer tenure, original currency, and target currency.
  
