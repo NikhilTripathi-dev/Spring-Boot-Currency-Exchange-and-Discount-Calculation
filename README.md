@@ -136,7 +136,7 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 
  Calculate the final payable amount in the target currency after applying the applicable discounts.
  
-# The application accepts two inputs:
+# The application accepts inputs:
 
   BillRequest: Whether the user is an employee, affiliate, a long-term customer (over 2 years) and original currency and target currency.
 
