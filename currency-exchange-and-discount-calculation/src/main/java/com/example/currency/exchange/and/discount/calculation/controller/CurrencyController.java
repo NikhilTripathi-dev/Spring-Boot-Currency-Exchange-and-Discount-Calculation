@@ -1,6 +1,5 @@
 package com.example.currency.exchange.and.discount.calculation.controller;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,14 +20,9 @@ public class CurrencyController {
     private final DiscountService discountService;
 
 	@PostMapping("/calculate")
-	public ResponseEntity<Double> calculate(@RequestBody BillRequest request) {
-		double discountTotal = discountService.calculateDiscount(request.getTotalAmount(), request.getUserType(),
-				request.isGrocery(), request.getCustomerTenure());
-		double exchangeRate = currencyService.getExchangeRate(request.getOriginalCurrency(),
-				request.getTargetCurrency());
-		double payableAmount = discountTotal * exchangeRate;
-
-		return ResponseEntity.ok(payableAmount);
+	public double calculate(@RequestBody BillRequest billRequest) {
+		double exchangeRate = currencyService.getExchangeRate(billRequest.getOriginalCurrency(), billRequest.getTargetCurrency());
+        return discountService.calculateTotalBill(billRequest, exchangeRate);
 	}
 
 }
