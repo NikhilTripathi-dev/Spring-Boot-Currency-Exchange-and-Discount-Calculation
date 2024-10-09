@@ -1,4 +1,4 @@
-package com.example.currency.exchange.and.discount.calculation.config;
+package com.example.currency.exchange.and.discount.calculation.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
