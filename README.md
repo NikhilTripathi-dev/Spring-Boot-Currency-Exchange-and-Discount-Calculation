@@ -123,7 +123,8 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 
 # Code Coverage
 
-![image](https://github.com/user-attachments/assets/64add768-02c7-4452-9fb9-ad2fdffaeb22)
+
+![image](https://github.com/user-attachments/assets/a9322c67-b0f5-4cb2-83b0-6706fc1cb251)
 
 
 
