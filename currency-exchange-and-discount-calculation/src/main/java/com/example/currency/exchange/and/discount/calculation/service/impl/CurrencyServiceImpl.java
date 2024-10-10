@@ -1,6 +1,5 @@
 package com.example.currency.exchange.and.discount.calculation.service.impl;
 
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -14,12 +13,11 @@ import lombok.AllArgsConstructor;
 @Service
 public class CurrencyServiceImpl implements CurrencyService{
 
-	private final String API_KEY = "your-api-key";
+	private final String API_KEY = "3751c42cede1845b9a2d96df"; 
 	private final String BASE_URL = "https://open.er-api.com/v6/latest/";
 	private final RestTemplate restTemplate;
 
 	@Override 
-	@Cacheable(value = "exchangeRates", key = "#request.baseCurrency + '_' + #request.targetCurrency")
 	public double getExchangeRate(String baseCurrency, String targetCurrency) {
 		String url = UriComponentsBuilder.fromHttpUrl(BASE_URL + baseCurrency).queryParam("apikey", API_KEY)
 				.toUriString();
@@ -28,6 +26,6 @@ public class CurrencyServiceImpl implements CurrencyService{
 			return response.getRates().get(targetCurrency);
 		} else {
 			throw new RuntimeException("Failed to fetch exchange rate for " + targetCurrency);
-		} 
+		}  
 	} 
-}
+} 
