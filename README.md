@@ -20,7 +20,7 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 # Steps to Set Up
   # Step 1: Clone the repository
 
-   git clone https://github.com/your-repo/Spring-Boot-Currency-Exchange-Discount.git
+   git clone https://github.com/NikhilTripathi-dev/Spring-Boot-Currency-Exchange-and-Discount-Calculation.git
 
    cd Spring-Boot-Currency-Exchange-Discount
 
