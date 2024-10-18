@@ -129,7 +129,7 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 
 # Api Documentation:
 
-  url:-http://localhost:8080/swagger-ui/index.html#/CurrencyController%20API/calculate
+  URL:- http://localhost:8080/swagger-ui/index.html#/CurrencyController%20API/calculate
   
 
   ![image](https://github.com/user-attachments/assets/d0680ab5-5372-402e-82e0-788b86a4f0ac)
