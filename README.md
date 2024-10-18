@@ -127,6 +127,14 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 ![image](https://github.com/user-attachments/assets/a9322c67-b0f5-4cb2-83b0-6706fc1cb251)
 
 
+# Api Documentation:
+
+  url:-http://localhost:8080/swagger-ui/index.html#/CurrencyController%20API/calculate
+  
+
+  ![image](https://github.com/user-attachments/assets/d0680ab5-5372-402e-82e0-788b86a4f0ac)
+
+
 
 # Assumption
  SQL Database is in place and we will use userid to get whether user is an employee or an affiliate or customer over 2 years from database
