@@ -15,6 +15,8 @@ Develop a Spring Boot application that integrates with a third-party currency ex
 5. Maven: Build and dependency management.
 
 6. Lambok: Java library that reduces boilerplate code by generating getter/setter methods.
+   
+7. Swagger for Api Documentation.
 
 
 # Steps to Set Up
